@@ -1,0 +1,8 @@
+{
+  "name": "react-native-2-side-menus",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Ali Najafizadeh <a.najafizadeh@gmail.com>",
+
+  "main": "lib/index.js"
+}
