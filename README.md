@@ -57,6 +57,8 @@ class Example1 extends Component {
 - animationStyle: (func)
 - animationFunction: (func)
 - gestures: (bool or func)
+- enableLeftGesture: bool
+- enableRightGesture: bool
 - leftMenu: (element) left menu component
 - rightMenu: (element) right menu component
 - openLeftMenuOffset: (number)
