@@ -14,7 +14,7 @@ var {
   ScrollView
 } = React;
 
-var Infinity = require('./libs');
+var TwoSideMenus = require('./libs');
 
 class Menu extends Component {
   constructor(props) {
@@ -46,13 +46,6 @@ class Example1 extends Component {
   }
 
   componentDidMount() {
-    //this.refs.menu.openMenu('left');
-
-    // setTimeout(() => {
-    //   this.refs.menu.openMenu('right');
-    //   this.refs.menu.openMenu('right');
-    // }, 2000);
-
     this.refs.menu.moreLifeCycles(this.refs.leftMenu, this.refs.rightMenu);
 
 
@@ -68,12 +61,12 @@ class Example1 extends Component {
 
   render() {
     return (
-      <Infinity
+      <TwoSideMenus
         ref="menu"
         leftMenu={<Menu ref="leftMenu" color="yellow"/>}
         rightMenu={<Menu ref="rightMenu" color="red"/>}>
         <ScrollView style={{ flex: 1, backgroundColor: 'blue' }}><View style={{ height: 2000 }}></View></ScrollView>
-      </Infinity>
+      </TwoSideMenus>
     );
   }
 }
