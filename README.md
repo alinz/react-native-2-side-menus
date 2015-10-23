@@ -19,26 +19,33 @@ npm install react-native-2-side-menus
 create a main component and pass your left and right components
 
 ```js
-const SideMenu = require('react-native-2-side-menus');
-
-const LeftMenu = require('./leftMenu');
-const RightMenu = require('./rightMenu');
-
 class Example1 extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.refs.menu.moreLifeCycles(this.refs.leftMenu, this.refs.rightMenu);
+
+
+    setTimeout(() => {
+      this.refs.menu.openMenu('left');
+
+      setTimeout(() => {
+        this.refs.menu.closeMenu();
+      }, 2000);
+
+    }, 2000);
   }
 
   render() {
     return (
-      <SideMenu
-        leftMenu={<LeftMenu/>}
-        rightMenu={<RightMenu/>}
-        touchToClose={true}>
-        <View style={{backgroundColor: 'blue', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text>Content</Text>
-        </View>
-      </SideMenu>
+      <TwoSideMenus
+        ref="menu"
+        leftMenu={<Menu ref="leftMenu" color="yellow"/>}
+        rightMenu={<Menu ref="rightMenu" color="red"/>}>
+        <ScrollView style={{ flex: 1, backgroundColor: 'blue' }}><View style={{ height: 2000 }}></View></ScrollView>
+      </TwoSideMenus>
     );
   }
 }
@@ -47,8 +54,9 @@ class Example1 extends Component {
 # Ref Methods
 
 - `openMenu(side)` side can be either `left` or `right`
-- `closeMenu()` closes either left or right menu if they either of them are open.
-- `toggleMenu(side)` toggle the state of open or close on either side.
+- `closeMenu()` closes either left or right menu if they are open. There will be no operation if none of them are opened.
+- `moreLifeCycles(leftMenuRef, rightMenuRef)` if you need this components calls `menuMightOpen`, `menuDidOpen` and `menuDidClose` in menu component, call this method in both `componentDidMount` and `componentWillReceiveProps` component.
+- `enableMenu(side, enable)` enables or disables the menu that you selected. `enable` value indicates the action.
 
 # Props
 
@@ -57,8 +65,6 @@ class Example1 extends Component {
 - animationStyle: (func)
 - animationFunction: (func)
 - gestures: (bool or func)
-- enableLeftGesture: bool
-- enableRightGesture: bool
 - leftMenu: (element) left menu component
 - rightMenu: (element) right menu component
 - openLeftMenuOffset: (number)
