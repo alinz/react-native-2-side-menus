@@ -73,6 +73,10 @@ class Example1 extends Component {
 - rightMenuToggleOffset: (number)
 - touchToClose: (bool) Allows for touching the partially hidden view to close the menu
 
+# Braking changes
+- v0.2.x
+    * there will be no more `toggleMenu`. i found no use for that.
+
 # Thanks
 
 Thanks for amazing code and contributors for `react-native-side-menu` and special thanks to [@Kureev](https://github.com/Kureev) for his work on [react-native-side-menu](https://github.com/Kureev/react-native-side-menu)
